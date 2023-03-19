@@ -7,7 +7,7 @@ namespace FuncionarioApi.Controllers
     [Route("[controller]")]
     public class IntranetController : ControllerBase
     {
-        
+
         private readonly FuncionarioContext _context;
 
         public IntranetController(FuncionarioContext context)
@@ -16,19 +16,32 @@ namespace FuncionarioApi.Controllers
         }
 
         [HttpPost("Cadastrar")]
-        public IActionResult Create(Funcionario funcionario)
+        public IActionResult Create(Funcionario funcionario, string Re)
         {
-            
-            _context.Add(funcionario);
-            _context.SaveChanges();
-            return Ok(funcionario);
+            if (_context.Funcionarios.Any(x => x.Re == Re))
+            {
+                return BadRequest(new ProblemDetails
+                {
+                    Title = "Já existe um funcionário cadastrado com esse Registro de Empregado (RE).",
+                    Status = StatusCodes.Status400BadRequest,
+                    Detail = "Por favor, insira um RE válido."
+                });
+
+            }else
+            {
+                _context.Add(funcionario);
+                _context.SaveChanges();
+                return Ok();
+            }
         }
+
         [HttpGet]
         public IActionResult Obter()
         {
             var tudinho = _context.Funcionarios.ToList();
             return Ok(tudinho);
         }
+
         [HttpGet("{id}")]
         public IActionResult ObterPorId(int id)
         {
@@ -41,16 +54,16 @@ namespace FuncionarioApi.Controllers
         }
 
         [HttpGet("ObterPorNome")]
-        public IActionResult ObterPorNome (string Nome)
+        public IActionResult ObterPorNome(string Nome)
         {
             var funcionario = _context.Funcionarios.Where(x => x.NomeFuncionario.Contains(Nome));
             return Ok(funcionario);
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Deletar(int id)
+        [HttpDelete("/funcionario/{Re}")]
+        public IActionResult Deletar(string Re)
         {
-            var funcionarioBanco = _context.Funcionarios.Find(id);
+            var funcionarioBanco = _context.Funcionarios.Where(x => x.Re.Contains(Re)).FirstOrDefault();
             if (funcionarioBanco == null)
             {
                 return NotFound();

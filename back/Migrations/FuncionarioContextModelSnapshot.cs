@@ -52,45 +52,10 @@ namespace FuncionarioApi.Migrations
 
                     b.HasKey("IdFuncionario");
 
-                    b.ToTable("Funcionarios");
-                });
-
-            modelBuilder.Entity("FuncionarioApi.Entities.FuncionarioImagem", b =>
-                {
-                    b.Property<int>("IdFuncionarioImagem")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdFuncionarioImagem"));
-
-                    b.Property<int>("IdFuncionario")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ImagemBase")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdFuncionarioImagem");
-
-                    b.HasIndex("IdFuncionario")
+                    b.HasIndex("Re")
                         .IsUnique();
 
-                    b.ToTable("FuncionarioImagens");
-                });
-
-            modelBuilder.Entity("FuncionarioApi.Entities.FuncionarioImagem", b =>
-                {
-                    b.HasOne("FuncionarioApi.Entities.Funcionario", "Funcionario")
-                        .WithOne("FuncionarioImagem")
-                        .HasForeignKey("FuncionarioApi.Entities.FuncionarioImagem", "IdFuncionario")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Funcionario");
-                });
-
-            modelBuilder.Entity("FuncionarioApi.Entities.Funcionario", b =>
-                {
-                    b.Navigation("FuncionarioImagem");
+                    b.ToTable("Funcionarios");
                 });
 #pragma warning restore 612, 618
         }

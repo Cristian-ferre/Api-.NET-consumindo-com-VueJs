@@ -5,7 +5,7 @@
 namespace FuncionarioApi.Migrations
 {
     /// <inheritdoc />
-    public partial class CriacaoTabelas : Migration
+    public partial class CriacaoTabelaFuncionarios : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,39 +27,16 @@ namespace FuncionarioApi.Migrations
                     table.PrimaryKey("PK_Funcionarios", x => x.IdFuncionario);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "FuncionarioImagens",
-                columns: table => new
-                {
-                    IdFuncionarioImagem = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ImagemBase = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IdFuncionario = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FuncionarioImagens", x => x.IdFuncionarioImagem);
-                    table.ForeignKey(
-                        name: "FK_FuncionarioImagens_Funcionarios_IdFuncionario",
-                        column: x => x.IdFuncionario,
-                        principalTable: "Funcionarios",
-                        principalColumn: "IdFuncionario",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
-                name: "IX_FuncionarioImagens_IdFuncionario",
-                table: "FuncionarioImagens",
-                column: "IdFuncionario",
+                name: "IX_Funcionarios_Re",
+                table: "Funcionarios",
+                column: "Re",
                 unique: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "FuncionarioImagens");
-
             migrationBuilder.DropTable(
                 name: "Funcionarios");
         }

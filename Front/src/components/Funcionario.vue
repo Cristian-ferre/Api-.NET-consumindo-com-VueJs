@@ -1,4 +1,5 @@
 <script >
+
 import axios from 'axios';
 
 export default {
@@ -14,12 +15,7 @@ export default {
     }
   },
   methods: {
-    abrirModal() {
-      this.$refs['meu-modal'].show()
-    },
-    fecharModal() {
-      this.$refs['meu-modal'].hide()
-    },
+
     lista() {
       axios.get(`https://localhost:7129/Intranet`).then((res) => {
         this.funcionarios = res.data
@@ -35,9 +31,11 @@ export default {
         this.lista()
       })
     },
-    excluir(id) {
+    excluir(re) {
+      console.log(re)
       if (confirm("Confirma a exclusão? ")) {
-        axios.delete(`https://localhost:7129/Intranet/${id}`).then(() => {
+
+        axios.delete(`https://localhost:7129/funcionario/${re}`).then(() => {
           this.lista()
         })
       }
@@ -47,8 +45,12 @@ export default {
 
       this.funcionario = funcionario
     },//esse envia
+    visualizar(di) {
+      console.log(di)
+    },
     alterar() {
       axios.put(`https://localhost:7129/Intranet/${this.funcionario.id}`, this.funcionario)
+
         .then(() => {
           this.lista()
           this.funcionario = { re: "", nomeFuncionario: "", email: "", ramal: "", imagem: "" }
@@ -63,10 +65,12 @@ export default {
 </script>
 
 <template>
+  <div class="d-inline-flex p-10">
 
-  <div>
-    <form>
+
+    <form class=" col-md-4">
       <div class="form-row">
+
         <div class="form-group col-md-6">
           <label for="Re">RE</label>
           <input type="hidden" id="id" name="id">
@@ -74,14 +78,12 @@ export default {
         </div>
         <div class="form-group col-md-6">
           <label for="Ramal">Ramal</label>
-          <input type="text" class="form-control" v-model="funcionario.ramal" id="Ramal" name="Ramal"
-            placeholder="Ramal">
+          <input type="text" class="form-control" v-model="funcionario.ramal" id="Ramal" name="Ramal" placeholder="Ramal">
         </div>
       </div>
       <div class="form-group">
         <label for="Email">Email</label>
-        <input type="email" class="form-control" v-model="funcionario.email" id="Email" name="Email"
-          placeholder="Email">
+        <input type="email" class="form-control" v-model="funcionario.email" id="Email" name="Email" placeholder="Email">
       </div>
       <div class="form-group">
         <label for="Nome">Nome</label>
@@ -100,13 +102,11 @@ export default {
         {{ mensagem }}
       </div>
 
-
-
     </form>
-    <table class="table">
+
+    <table class="table col-md-3">
       <thead>
         <tr>
-          <th>Id</th>
           <th>Re</th>
           <th>Nome</th>
           <th>Email</th>
@@ -116,28 +116,20 @@ export default {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="funcionario in funcionarios" v-bind:key="funcionario.id">
-          <td>{{ funcionario.id }}</td>
+        <tr v-for="funcionario in funcionarios" v-bind:key="funcionario.IdFuncionario">
           <td>{{ funcionario.re }}</td>
           <td>{{ funcionario.nomeFuncionario }}</td>
           <td>{{ funcionario.email }}</td>
           <td>{{ funcionario.ramal }}</td>
           <td>{{ funcionario.imagem }}</td>
           <td><button class="btn btn-primary" v-on:click="editar(funcionario)">Editar</button></td>
-          <td><button class="btn btn-danger" v-on:click="excluir(funcionario.id)">Excluir</button></td>
+          <td><button class="btn btn-danger" v-on:click="excluir(funcionario.re)">Excluir</button></td>
+          <!-- <td><button class="btn btn-danger" v-on:click="visualizar(funcionario.IdFuncionario)">visu</button></td> -->
+
         </tr>
       </tbody>
     </table>
-    <div>
-      <b-button @click="abrirModal">Abrir Modal</b-button>
-      <b-button @click="fecharModal">Fechar Modal</b-button>
-      <b-modal ref="meu modal"></b-modal>
-    </div>
+
   </div>
-
-
-
 </template>
-<style scoped>
-
-</style>
+<style scoped></style>

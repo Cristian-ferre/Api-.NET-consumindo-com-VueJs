@@ -1,11 +1,10 @@
-using System;
-using System.Collections.Generic;
+
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace FuncionarioApi.Entities
 {
+    [Index(nameof(Re), IsUnique = true)]
     public class Funcionario
     {
         [Key]
