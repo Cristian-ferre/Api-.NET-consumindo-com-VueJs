@@ -6,7 +6,7 @@ Api em NET consumida com o framework FrontEnd VueJs
 
 ![modelagem_api_consumo_vue](https://user-images.githubusercontent.com/99483009/232807020-4afa5a2d-e9b4-4810-953e-0dacab64e171.svg)
 
-<h2> Endepoints </h2>
+<h2> Endpoints </h2>
 
 <h3> Entidade Funcionarios </h3>
 - Adicionar Funcionario
