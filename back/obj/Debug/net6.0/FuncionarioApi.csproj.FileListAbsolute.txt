@@ -244,3 +244,8 @@ C:\Users\User\OneDrive - sgiweb.com.br\Desktop\funcionarios\Api-.NET-consumindo-
 C:\Users\User\OneDrive - sgiweb.com.br\Desktop\funcionarios\Api-.NET-consumindo-com-VueJs\back\obj\Debug\net6.0\FuncionarioApi.pdb
 C:\Users\User\OneDrive - sgiweb.com.br\Desktop\funcionarios\Api-.NET-consumindo-com-VueJs\back\obj\Debug\net6.0\FuncionarioApi.genruntimeconfig.cache
 C:\Users\User\OneDrive - sgiweb.com.br\Desktop\funcionarios\Api-.NET-consumindo-com-VueJs\back\obj\Debug\net6.0\ref\FuncionarioApi.dll
+C:\Users\User\OneDrive - sgiweb.com.br\Desktop\funcionarios\Api-.NET-consumindo-com-VueJs\back\obj\Debug\net6.0\staticwebassets\msbuild.FuncionarioApi.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\User\OneDrive - sgiweb.com.br\Desktop\funcionarios\Api-.NET-consumindo-com-VueJs\back\obj\Debug\net6.0\staticwebassets\msbuild.build.FuncionarioApi.props
+C:\Users\User\OneDrive - sgiweb.com.br\Desktop\funcionarios\Api-.NET-consumindo-com-VueJs\back\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.FuncionarioApi.props
+C:\Users\User\OneDrive - sgiweb.com.br\Desktop\funcionarios\Api-.NET-consumindo-com-VueJs\back\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.FuncionarioApi.props
+C:\Users\User\OneDrive - sgiweb.com.br\Desktop\funcionarios\Api-.NET-consumindo-com-VueJs\back\obj\Debug\net6.0\staticwebassets.pack.json

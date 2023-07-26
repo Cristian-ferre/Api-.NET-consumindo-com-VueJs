@@ -5,7 +5,7 @@
 namespace FuncionarioApi.Migrations
 {
     /// <inheritdoc />
-    public partial class CriacaoTabelaFuncionarios : Migration
+    public partial class databaseIntranet : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

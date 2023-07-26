@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FuncionarioApi.Migrations
 {
     [DbContext(typeof(FuncionarioContext))]
-    [Migration("20230319185837_CriacaoTabelaFuncionarios")]
-    partial class CriacaoTabelaFuncionarios
+    [Migration("20230726140941_databaseIntranet")]
+    partial class databaseIntranet
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
