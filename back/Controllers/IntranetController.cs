@@ -27,7 +27,8 @@ namespace FuncionarioApi.Controllers
                     Detail = "Por favor, insira um RE válido."
                 });
 
-            }else
+            }
+            else
             {
                 _context.Add(funcionario);
                 _context.SaveChanges();
@@ -80,18 +81,14 @@ namespace FuncionarioApi.Controllers
 
             if (funcionarioBanco == null)
                 return NotFound();
-
             funcionarioBanco.Re = funcionario.Re;
             funcionarioBanco.Ramal = funcionario.Ramal;
             funcionarioBanco.NomeFuncionario = funcionario.NomeFuncionario;
             funcionarioBanco.Email = funcionario.Email;
             funcionarioBanco.Imagem = funcionario.Imagem;
-
             _context.Funcionarios.Update(funcionarioBanco);
             _context.SaveChanges();
             return Ok(funcionarioBanco);
         }
-
-
     }
 }

@@ -1,5 +1,8 @@
 using FuncionarioApi.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +35,11 @@ app.UseCors(c => {
     c.AllowAnyHeader();
     c.AllowAnyMethod();
     c.AllowAnyOrigin();
+});
+
+app.UseStaticFiles(new StaticFileOptions(){
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "resources")),
+    RequestPath = new PathString("/resources")
 });
 
 app.UseAuthorization();
